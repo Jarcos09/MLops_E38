@@ -1,19 +1,28 @@
 # Fase 1 | Avance de Proyecto
 # Equipo 38
 
-Esta actividad corresponde a la fase 1 del proyecto, en la cual se emplea el conjunto de datos **Energy Efficiency**. Esta primera etapa está diseñada para abarcar desde la manipulación y preparación de los datos, hasta la construcción y evaluación de modelos.
+Esta actividad corresponde a la fase 1 del proyecto, en la cual se emplea el conjunto de datos Energy Efficiency. Esta etapa está diseñada para abarcar desde la manipulación y preparación de los datos, hasta la construcción y evaluación de modelos de Machine Learning.
 
-Características del dataset
 
-Esta información proviene de un estudio que evaluó los requisitos de carga térmica para calefacción y refrigeración en edificios, es decir, su eficiencia energética, en función de diversos parámetros arquitectónicos. El conjunto de datos, disponible en la siguiente liga, fue generado a partir de un análisis energético que consideró 12 configuraciones distintas de edificios, simuladas mediante el software Ecotect. Las edificaciones varían en aspectos como el área de acristalamiento, la distribución de dicha área y la orientación, entre otros parámetros relevantes.
+**Características del dataset**
 
-El conjunto de datos se describe en el texto académico llamado Accurate quantitative estimation of energy performance of residential buildings using statistical machine learning tools (Tsanasa & Xifarab, 2012).
+El conjunto de datos proviene de un estudio que evaluó los requisitos de carga térmica para calefacción y refrigeración en edificios residenciales, es decir, su eficiencia energética, en función de diversos parámetros arquitectónicos. Fue generado mediante simulaciones en el software especializado Ecotect, considerando 12 configuraciones distintas de edificios con variaciones en orientación, proporción de ventanas, materiales y condiciones internas típicas de uso residencial.
+Este dataset se describe en el artículo académico Accurate quantitative estimation of energy performance of residential buildings using statistical machine learning tools (Tsanasa & Xifarab, 2012).
+El conjunto original contiene 768 configuraciones de edificios, cada una caracterizada por las siguientes variables:
+- X1: Compacidad
+- X2: Área de superficie
+- X3: Área de pared
+- X4: Área de techo
+- X5: Altura total
+- X6: Orientación
+- X7: Área de acristalamiento
+- X8: Distribución del acristalamiento
+Las variables objetivo son:
+- Y1: Carga de calefacción (Heating Load)
+- Y2: Carga de enfriamiento (Cooling Load)
 
-Estos datos provienen de simulaciones de edificios residenciales realizadas con software especializado llamado Ecotect. Se diseñaron distintas formas de construcción manteniendo el mismo volumen, pero variando superficies, orientaciones y proporción de ventanas. También se consideraron diferentes materiales y condiciones internas típicas de uso residencial.
 
-El Dataset original contiene 768 configuraciones de edificios, cada una caracterizada por variables como la compacidad (X1), el área de superficie (X2), pared (X3), techos (X4), altura total (X5), orientación (X6), área de acristalamiento (X7) y distribución de área de acristalamiento (X8). Para cada caso se calcularon dos resultados principales: la carga de calefacción (Heating Load o HL, representada como Y1) y la carga de enfriamiento (Cooling Load o CL, representada como Y2), que sirven como referencia para evaluar el desempeño energético.
-
-Liga de la información del dataset [Rendimiento energético](https://archive.ics.uci.edu/dataset/242/energy+efficiency) 
+Enlace al dataset [Rendimiento energético](https://archive.ics.uci.edu/dataset/242/energy+efficiency) 
 
 
 
@@ -31,14 +40,14 @@ Liga de la información del dataset [Rendimiento energético](https://archive.ic
 
 ---
 
-## Instalación MiniConda
+## Instalación de MiniConda (Linux)
 1. wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 2. bash ./Miniconda3-latest-Linux-x86_64.sh -b
 3. source ~/miniconda3/bin/activate
 4. conda init
 5. rm ./Miniconda3-latest-Linux-x86_64.sh
 
-## Creacion del entorno virtual
+## Creación del entorno virtual
 1. conda create --name mlops python=3.13
 2. conda activate mlops
 3. pip install -r requirements.txt
