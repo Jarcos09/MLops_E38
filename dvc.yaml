@@ -1,8 +1,0 @@
-stages:
-  train:
-    cmd: python Fase_1.py
-    deps:
-    - Dataset/
-    - Fase_1.py
-    outs:
-    - Modelos/linear_regression_Y1.pkl
