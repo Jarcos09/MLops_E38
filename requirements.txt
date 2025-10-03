@@ -30,6 +30,7 @@ cookiecutter-data-science==2.3.0
 gdown==5.2.0
 
 # Pruebas y aseguramiento de calidad
+
 pytest==8.4.2
 
 # APIs y servicios web
