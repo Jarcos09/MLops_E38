@@ -6,7 +6,7 @@ from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 
 # Importar funciones personalizadas
-from Funciones import clean_process, impute_outliers
+from funciones import clean_process, impute_outliers
 
 # Rutas relativas
 base_dir = Path(__file__).resolve().parent.parent  # Asume que el script está en MLops_E38/scripts o similar
