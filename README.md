@@ -58,6 +58,16 @@ Enlace al dataset [Rendimiento energético](https://archive.ics.uci.edu/dataset/
 ## Instalar paqueterias
 1. pip install -r requirements.txt
 2. python -m ipykernel install --user --name=mlops --display-name "mlops"
+
+## Configurar dvc
+
+1. git init
+2. dvc init
+3. dvc remote add -d s3remote s3://dvc-mlops-e38
+4. dvc remote modify s3remote access_key_id <ACCESS_KEY_ID>
+5. dvc remote modify s3remote secret_access_key <SECRET_ACCESS_KEY>
+6. dvc remote modify s3remote endpointurl https://s3.amazonaws.com
+
 ---
 
 ## Roles del Equipo
