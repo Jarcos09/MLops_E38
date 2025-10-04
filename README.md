@@ -47,6 +47,10 @@ Enlace al dataset [Rendimiento energético](https://archive.ics.uci.edu/dataset/
 4. conda init
 5. rm ./Miniconda3-latest-Linux-x86_64.sh
 
+## Instalar paqueterias
+1. pip install -r requirements.txt
+2. python -m ipykernel install --user --name=mlops --display-name "mlops"
+
 ## Creación del entorno virtual
 1. conda create --name mlops python=3.13
 2. conda activate mlops
@@ -54,10 +58,6 @@ Enlace al dataset [Rendimiento energético](https://archive.ics.uci.edu/dataset/
 ## Clonar el repositorio
 1. git clone https://github.com/Jarcos09/MLops_E38.git
 2. cd MLops_E38/
-
-## Instalar paqueterias
-1. pip install -r requirements.txt
-2. python -m ipykernel install --user --name=mlops --display-name "mlops"
 
 ## Configurar dvc
 
