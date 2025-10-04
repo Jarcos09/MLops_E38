@@ -9,7 +9,7 @@ DVC_REMOTE=s3remote
 DVC_BUCKET=s3://dvc-mlops-e38
 
 # Ruta del script de limpieza
-SCRIPT=script/EDA.py
+SCRIPT=scripts/EDA.py
 
 # Comando para crear entorno virtual
 init:
