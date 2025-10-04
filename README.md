@@ -81,7 +81,7 @@ Enlace al dataset [Rendimiento energético](https://archive.ics.uci.edu/dataset/
 
 ## Makefile
 ```bash
-#Para instalar la paqueteria:
+#Para instalar paqueterias de Python:
 make install
 
 #Ejecutar EDA:
