@@ -8,6 +8,9 @@ REQUIREMENTS=requirements.txt
 DVC_REMOTE=s3remote
 DVC_BUCKET=s3://dvc-mlops-e38
 
+# Ruta del script de limpieza
+SCRIPT=script/EDA.py
+
 # Comando para crear entorno virtual
 init:
 	python3 -m venv $(ENV_NAME)
@@ -45,7 +48,8 @@ dvc-push:
 	dvc push
 	@echo "Datos subidos al remoto DVC"
 
-# Limpieza
-clean:
-	rm -rf $(ENV_NAME)
-	@echo "Entorno virtual eliminado"
+# Ejecutar EDA
+EDA:
+	python $(SCRIPT)
+	@echo "Limpieza ejecutada con éxito desde $(SCRIPT)"
+
