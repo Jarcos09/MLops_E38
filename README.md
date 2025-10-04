@@ -70,16 +70,13 @@ Enlace al dataset [Rendimiento energético](https://archive.ics.uci.edu/dataset/
 
 ---
 
+## Makefile
 ```bash
-## Usando el Makefile
-
-Para instalar la paqueteria:
-
+#Para instalar la paqueteria:
 make install
 
-Ejecutar EDA:
-
- make EDA
+#Ejecutar EDA:
+make EDA
 ```
 
 ## Roles del Equipo
