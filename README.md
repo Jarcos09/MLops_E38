@@ -41,31 +41,41 @@ Enlace al dataset [Rendimiento energético](https://archive.ics.uci.edu/dataset/
 ---
 
 ## Instalación de MiniConda (Linux)
+```bash
 1. wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 2. bash ./Miniconda3-latest-Linux-x86_64.sh -b
 3. source ~/miniconda3/bin/activate
 4. conda init
 5. rm ./Miniconda3-latest-Linux-x86_64.sh
+```
 
 ## Clonar el repositorio
+```bash
 1. git clone https://github.com/Jarcos09/MLops_E38.git
 2. cd MLops_E38/
+```
 
 ## Instalar paqueterias
+```bash
 1. pip install -r requirements.txt
 2. python -m ipykernel install --user --name=mlops --display-name "mlops"
+```
 
 ## Creación del entorno virtual
+```bash
 1. conda create --name mlops python=3.13
 2. conda activate mlops
+```
 
 ## Configurar dvc
+```bash
 1. git init
 2. dvc init
 3. dvc remote add -d s3remote s3://dvc-mlops-e38
 4. dvc remote modify s3remote access_key_id <ACCESS_KEY_ID>
 5. dvc remote modify s3remote secret_access_key <SECRET_ACCESS_KEY>
 6. dvc remote modify s3remote endpointurl https://s3.amazonaws.com
+```
 
 ---
 
