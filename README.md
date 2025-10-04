@@ -73,7 +73,7 @@ Enlace al dataset [Rendimiento energético](https://archive.ics.uci.edu/dataset/
 ## Usando el Makefile
 
 1 . Para instalar la paqueteria
-make install
+- make install
 
 ## Roles del Equipo
 | Integrante | Matrícula | Rol |
