@@ -6,7 +6,7 @@ from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 
 # Importar funciones personalizadas
-from funciones import clean_process, impute_outliers
+from funciones import *
 
 # Rutas relativas
 base_dir = Path(__file__).resolve().parent.parent  # Asume que el script está en MLops_E38/scripts o similar
@@ -40,8 +40,9 @@ if missing_cols:
     raise ValueError(f"Faltan columnas esperadas en el dataset limpio: {missing_cols}")
 
 # Imputación
-df_imputado = impute_outliers(df_clean, highly_bias_cols)
+df_missing_values = impute_missing_values(df_clean, highly_bias_cols)
+df_impute_outliers = impute_outliers(df_missing_values, highly_bias_cols)
 
 # Guardar el dataset imputado como limpio
-df_imputado.to_csv(ruta_dataset_limpio, index=False)
+df_impute_outliers.to_csv(ruta_dataset_limpio, index=False)
 print(f"Dataset limpio (imputado) guardado en: {ruta_dataset_limpio}")
