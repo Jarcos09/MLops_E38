@@ -6,6 +6,8 @@ scikit-learn==1.7.1
 scipy==1.16.1
 matplotlib==3.10.6
 seaborn==0.13.2
+xgboost==2.0.3
+# Nota: La versión se estableció en 2.0.3 como un buen ejemplo actual
 
 # Experimentación, validación y monitoreo de modelos
 
@@ -27,6 +29,7 @@ ipykernel==6.30.1
 dvc==3.63.0
 dvc-gdrive ==3.0.1
 dvc[s3]
+dvc[gdrive]
 cookiecutter-data-science==2.3.0
 gdown==5.2.0
 
