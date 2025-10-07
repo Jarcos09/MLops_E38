@@ -13,6 +13,9 @@ INIT_SCRIPT = scripts/init_dvc.sh
 # Ruta al script para versionar datos
 SAVE_SCRIPT = scripts/save_and_version.py
 
+# Ruta al script de entrenamiento
+TRAIN_SCRIPT = scripts/train_model.py
+
 # Comando para crear entorno virtual
 init:
 	python3 -m venv $(ENV_NAME)
@@ -43,4 +46,9 @@ init_and_version: init_dvc version_dataset
 EDA:
 	python $(SCRIPT)
 	@echo "Limpieza ejecutada con éxito desde $(SCRIPT)"
+
+
+# Entrena el modelo
+train_model:
+    python $(TRAIN_SCRIPT) $(FILE)
 
