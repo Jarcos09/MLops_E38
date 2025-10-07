@@ -32,11 +32,15 @@ install:
 version_dataset:
 	python $(SAVE_SCRIPT) $(FILE) "$(MSG)"
 
+# iniciar dvc
+init_dvc:
+	bash $(INIT_SCRIPT)
+
+# Regla compuesta: inicializa DVC y luego versiona el dataset
+init_and_version: init_dvc version_dataset
+
 # Ejecutar EDA
 EDA:
 	python $(SCRIPT)
 	@echo "Limpieza ejecutada con éxito desde $(SCRIPT)"
 
-# iniciar dvc
-init_dvc:
-	bash $(INIT_SCRIPT)
