@@ -69,10 +69,25 @@ Enlace al dataset [Rendimiento energético](https://archive.ics.uci.edu/dataset/
 
 ## Configurar dvc
 ```bash
-1. dvc init    # Inicializar un nuevo repositorio DVC en el proyecto actual
+
+# Inicializar un nuevo repositorio DVC en el proyecto actual
+1. dvc init
+
+# Agregar un remote tipo Google Drive como destino principal de datos
 2. dvc remote add -d datos gdrive://<ID_REPOSITORIO>
+
+# Configurar el acceso al remote con credenciales de cliente OAuth
 3. dvc remote modify datos gdrive_client_id <ID_CLIENT>
 4. dvc remote modify datos gdrive_client_secret <ID_CLIENT_SECRET>
+
+# Verificar la lista de remotes configurado
+5. dvc remote list
+
+# Agregar todos los archivos modificados o creados al área de preparación de Git
+6. git add .
+
+# Crear un commit con un mensaje descriptivo
+7. git commit -m "Init DVC"
 ```
 
 ---
