@@ -69,12 +69,10 @@ Enlace al dataset [Rendimiento energético](https://archive.ics.uci.edu/dataset/
 
 ## Configurar dvc
 ```bash
-1. git init
-2. dvc init
-3. dvc remote add -d s3remote s3://dvc-mlops-e38
-4. dvc remote modify s3remote access_key_id <ACCESS_KEY_ID>
-5. dvc remote modify s3remote secret_access_key <SECRET_ACCESS_KEY>
-6. dvc remote modify s3remote endpointurl https://s3.amazonaws.com
+1. dvc init    # Inicializar un nuevo repositorio DVC en el proyecto actual
+2. dvc remote add -d datos gdrive://<ID_REPOSITORIO>
+3. dvc remote modify datos gdrive_client_id <ID_CLIENT>
+4. dvc remote modify datos gdrive_client_secret <ID_CLIENT_SECRET>
 ```
 
 ---
