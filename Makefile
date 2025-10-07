@@ -7,6 +7,12 @@ REQUIREMENTS=requirements.txt
 # Ruta del script de limpieza
 SCRIPT=scripts/EDA.py
 
+# Ruta al script de inicialización de DVC
+INIT_SCRIPT = scripts/init_dvc.sh
+
+# Ruta al script para versionar datos
+SAVE_SCRIPT = scripts/save_and_version.py
+
 # Comando para crear entorno virtual
 init:
 	python3 -m venv $(ENV_NAME)
@@ -24,23 +30,13 @@ install:
 
 # Agregar dataset a DVC
 dvc-add:
-	git rm -r --cached Dataset || true
-	git commit -m "stop tracking Dataset" || true
-	dvc add Dataset
-	git add Dataset.dvc .gitignore
-	git commit -m "track Dataset with DVC"
-	@echo "Dataset agregado a DVC"
-
-# Subir datos a S3
-dvc-push:
-	dvc push
-	@echo "Datos subidos al remoto DVC"
+	python $(SAVE_SCRIPT) $(FILE) "$(MSG)"
 
 # Ejecutar EDA
 EDA:
 	python $(SCRIPT)
 	@echo "Limpieza ejecutada con éxito desde $(SCRIPT)"
 
-# Configuración dvc
+# iniciar dvc
 init_dvc:
-	bash scripts/init_dvc.sh
+	bash $(INIT_SCRIPT)
