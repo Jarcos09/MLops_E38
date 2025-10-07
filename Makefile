@@ -50,5 +50,5 @@ EDA:
 
 # Entrena el modelo
 train_model:
-    python $(TRAIN_SCRIPT) $(FILE)
+	python $(TRAIN_SCRIPT) $(FILE)
 
