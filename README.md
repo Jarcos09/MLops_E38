@@ -99,6 +99,15 @@ make install
 
 #Ejecutar EDA:
 make EDA
+
+# Inicializar DVC:
+make init_dvc
+
+# Versionar un archivo:
+make version_dataset FILE=<ruta al archivo> MSG=<Mensaje>
+
+# Inicializar y versionar
+make init_and_version FILE=<ruta al archivo> MSG=<Mensaje>
 ```
 
 ## Roles del Equipo
