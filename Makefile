@@ -29,7 +29,7 @@ install:
 	@echo "Dependencias instaladas desde $(REQUIREMENTS)"
 
 # Agregar dataset a DVC
-dvc-add:
+version_dataset:
 	python $(SAVE_SCRIPT) $(FILE) "$(MSG)"
 
 # Ejecutar EDA
