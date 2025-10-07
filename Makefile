@@ -4,10 +4,6 @@ ENV_NAME=mlops
 # Archivo de dependencias
 REQUIREMENTS=requirements.txt
 
-# Nombre del remoto DVC
-DVC_REMOTE=s3remote
-DVC_BUCKET=s3://dvc-mlops-e38
-
 # Ruta del script de limpieza
 SCRIPT=scripts/EDA.py
 
@@ -25,14 +21,6 @@ install:
 	pip install --upgrade pip
 	pip install -r $(REQUIREMENTS)
 	@echo "Dependencias instaladas desde $(REQUIREMENTS)"
-
-# Configurar DVC remoto
-dvc-setup:
-	dvc remote add -d $(DVC_REMOTE) $(DVC_BUCKET)
-	dvc remote modify $(DVC_REMOTE) access_key_id $(ACCESS_KEY)
-	dvc remote modify $(DVC_REMOTE) secret_access_key $(SECRET_KEY)
-	dvc remote modify $(DVC_REMOTE) endpointurl https://s3.amazonaws.com
-	@echo "Remoto DVC configurado: $(DVC_REMOTE)"
 
 # Agregar dataset a DVC
 dvc-add:
@@ -53,3 +41,6 @@ EDA:
 	python $(SCRIPT)
 	@echo "Limpieza ejecutada con éxito desde $(SCRIPT)"
 
+# Configuración dvc
+init_dvc:
+	bash init_dvc.sh
