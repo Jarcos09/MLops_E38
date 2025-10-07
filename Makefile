@@ -43,4 +43,4 @@ EDA:
 
 # Configuración dvc
 init_dvc:
-	bash init_dvc.sh
+	bash scripts/init_dvc.sh
