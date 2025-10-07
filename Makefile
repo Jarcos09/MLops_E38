@@ -40,7 +40,7 @@ init_dvc:
 	bash $(INIT_SCRIPT)
 
 # Regla compuesta: inicializa DVC y luego versiona el dataset
-init_and_version: init_dvc version_dataset
+init_and_version:	init_dvc version_dataset
 
 # Ejecutar EDA
 EDA:
