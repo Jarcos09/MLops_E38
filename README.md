@@ -110,6 +110,12 @@ make version_dataset FILE=<ruta al archivo> MSG=<Mensaje>
 make init_and_version FILE=<ruta al archivo> MSG=<Mensaje>
 ```
 
+## Ejemplo Train model
+```bash
+dvc pull Dataset/energy_modified_imputed_outliers.csv.dvc
+make train_model FILE=Dataset/energy_modified_imputed_outliers.csv
+```
+
 ## Roles del Equipo
 | Integrante | Matrícula | Rol |
 |---|---|---|
