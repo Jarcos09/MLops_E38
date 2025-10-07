@@ -42,29 +42,29 @@ Enlace al dataset [Rendimiento energético](https://archive.ics.uci.edu/dataset/
 
 ## Instalación de MiniConda (Linux)
 ```bash
-1. wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-2. bash ./Miniconda3-latest-Linux-x86_64.sh -b
-3. source ~/miniconda3/bin/activate
-4. conda init
-5. rm ./Miniconda3-latest-Linux-x86_64.sh
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash ./Miniconda3-latest-Linux-x86_64.sh -b
+source ~/miniconda3/bin/activate
+conda init
+rm ./Miniconda3-latest-Linux-x86_64.sh
 ```
 
 ## Clonar el repositorio
 ```bash
-1. git clone https://github.com/Jarcos09/MLops_E38.git
-2. cd MLops_E38/
+git clone https://github.com/Jarcos09/MLops_E38.git
+cd MLops_E38/
 ```
 
 ## Instalar paqueterias
 ```bash
-1. pip install -r requirements.txt
-2. python -m ipykernel install --user --name=mlops --display-name "mlops"
+pip install -r requirements.txt
+python -m ipykernel install --user --name=mlops --display-name "mlops"
 ```
 
 ## Creación del entorno virtual
 ```bash
-1. conda create --name mlops python=3.13
-2. conda activate mlops
+conda create --name mlops python=3.13
+conda activate mlops
 ```
 
 ## Configurar dvc
