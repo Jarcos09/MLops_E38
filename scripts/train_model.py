@@ -153,8 +153,14 @@ if __name__ == "__main__":
     parser.add_argument("csv_path", help="Ruta al archivo CSV con los datos.")
     args = parser.parse_args()
 
+    print(f"\n{CIAN}Datos cargados desde {args.csv_path}{RESET}")
     df = pd.read_csv(args.csv_path)
+    
+    print(f"\n{VERDE}--- Generando conjuntos de entrenamiento y prueba ---{RESET}")
     X_train, X_test, y_train, y_test = preprocess_features_and_split(df)
+    print(f"Tamaño del conjunto de entrenamiento: {AZUL}{X_train.shape[0]}{RESET} observaciones")
+    print(f"Tamaño del conjunto de prueba: {AZUL}{X_test.shape[0]}{RESET} observaciones")
+    
     best_rf_reg, y_pred = random_forest_multioutput_regression(X_train, X_test, y_train, y_test)
     
     print("Mejor modelo Random Forest (MultiOutputRegressor):")
