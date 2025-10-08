@@ -153,7 +153,7 @@ if __name__ == "__main__":
     parser.add_argument("csv_path", help="Ruta al archivo CSV con los datos.")
     args = parser.parse_args()
 
-    print(f"\n{VERDE}--- Comenzando entrenamiento del modelo ---{RESET}")
+    print(f"{VERDE}--- Inicio del proceso de entrenamiento ---{RESET}")
 
     print(f"\n{CIAN}Datos cargados desde {args.csv_path}{RESET}")
     df = pd.read_csv(args.csv_path)
