@@ -21,10 +21,6 @@ init:
 	python3 -m venv $(ENV_NAME)
 	@echo "Entorno virtual creado: $(ENV_NAME)"
 
-# Activar entorno virtual (solo para referencia)
-activate:
-	@echo "Para activar el entorno: source $(ENV_NAME)/bin/activate"
-
 # Instalar dependencias
 install:
 	pip install --upgrade pip
@@ -46,7 +42,6 @@ init_and_version:	init_dvc version_dataset
 EDA:
 	python $(SCRIPT)
 	@echo "Limpieza ejecutada con éxito desde $(SCRIPT)"
-
 
 # Entrena el modelo
 train_model:
