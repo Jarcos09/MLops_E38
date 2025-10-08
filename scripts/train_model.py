@@ -11,6 +11,9 @@ from sklearn.multioutput import MultiOutputRegressor
 from sklearn.metrics import mean_squared_error, r2_score
 import xgboost as xgb
 
+import warnings
+warnings.filterwarnings('ignore')
+
 # Función de preprocesamiento
 def preprocess_features_and_split(df, test_size=0.2, random_state=42):
     X = df.drop(columns=["Y1", "Y2", "mixed_type_col"])
@@ -56,7 +59,10 @@ def random_forest_multioutput_regression(X_train, X_test, y_train, y_test, rando
             "estimator__min_samples_split": [5, 10]
         }
 
-    grid_reg = GridSearchCV(multioutput_rf, param_grid, cv=5, scoring="neg_mean_squared_error", n_jobs=-1, verbose=1)
+    print("--- Iniciando Búsqueda de Hiperparámetros para Random Forest Multi-Output ---")
+
+    #grid_reg = GridSearchCV(multioutput_rf, param_grid, cv=5, scoring="neg_mean_squared_error", n_jobs=-1, verbose=1)
+    grid_reg = GridSearchCV(multioutput_rf, param_grid, cv=5, scoring="neg_mean_squared_error", n_jobs=-1, verbose=0)
     grid_reg.fit(X_train, y_train.values)
 
     best_rf_reg = grid_reg.best_estimator_
@@ -95,7 +101,7 @@ def train_and_evaluate_xgb(X_train, X_test, y_train, y_test,best_rf_reg, random_
     rf_params = best_rf_reg.estimator.get_params()
 
     # 1) Inicializar modelo XGBoost base y envoltura multi-output
-    print("--- Inicializando Modelo XGBoost Multi-Output ---")
+    print("\n--- Inicializando Modelo XGBoost Multi-Output ---")
     xgb_base = xgb.XGBRegressor(
         objective='reg:squarederror',
         n_estimators=rf_params.get('n_estimators', 100),      # Número de árboles
@@ -143,6 +149,13 @@ if __name__ == "__main__":
     df = pd.read_csv(args.csv_path)
     X_train, X_test, y_train, y_test = preprocess_features_and_split(df)
     best_rf_reg, y_pred = random_forest_multioutput_regression(X_train, X_test, y_train, y_test)
+    
+    print("Mejor modelo Random Forest (MultiOutputRegressor):")
+    estimator = best_rf_reg.estimator
+    params = estimator.get_params()
+    for key in ['n_estimators', 'max_depth', 'min_samples_split', 'random_state']:
+        print(f"{key}: {params[key]}")
+
     train_and_evaluate_xgb(X_train, X_test, y_train, y_test,best_rf_reg)
 
     
