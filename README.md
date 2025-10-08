@@ -55,7 +55,7 @@ git clone https://github.com/Jarcos09/MLops_E38.git
 cd MLops_E38/
 ```
 
-## Instalar paqueterias
+## Instalar paqueterías
 ```bash
 pip install -r requirements.txt
 ```
