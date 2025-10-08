@@ -9,7 +9,7 @@ from sklearn.pipeline import Pipeline
 from funciones import *
 
 # Rutas relativas
-base_dir = Path(__file__).resolve().parent.parent  # Asume que el script está en MLops_E38/scripts o similar
+base_dir = Path(__file__).resolve().parent.parent 
 
 # Nombres de carpetas y archivos
 nombre_carpeta = "Dataset"
