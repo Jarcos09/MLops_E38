@@ -14,6 +14,13 @@ import xgboost as xgb
 import warnings
 warnings.filterwarnings('ignore')
 
+CIAN = "\033[96m"
+VERDE = "\033[92m"
+ROJO = "\033[91m"
+AMARILLO = "\033[93m"
+AZUL = "\033[94m"
+RESET = "\033[0m"
+
 # Función de preprocesamiento
 def preprocess_features_and_split(df, test_size=0.2, random_state=42):
     X = df.drop(columns=["Y1", "Y2", "mixed_type_col"])
@@ -59,7 +66,7 @@ def random_forest_multioutput_regression(X_train, X_test, y_train, y_test, rando
             "estimator__min_samples_split": [5, 10]
         }
 
-    print("--- Iniciando Búsqueda de Hiperparámetros para Random Forest Multi-Output ---")
+    print(f"\n{VERDE}--- Iniciando Búsqueda de Hiperparámetros para Random Forest Multi-Output ---{RESET}")
 
     #grid_reg = GridSearchCV(multioutput_rf, param_grid, cv=5, scoring="neg_mean_squared_error", n_jobs=-1, verbose=1)
     grid_reg = GridSearchCV(multioutput_rf, param_grid, cv=5, scoring="neg_mean_squared_error", n_jobs=-1, verbose=0)
@@ -101,7 +108,7 @@ def train_and_evaluate_xgb(X_train, X_test, y_train, y_test,best_rf_reg, random_
     rf_params = best_rf_reg.estimator.get_params()
 
     # 1) Inicializar modelo XGBoost base y envoltura multi-output
-    print("\n--- Inicializando Modelo XGBoost Multi-Output ---")
+    print(f"\n{VERDE}--- Inicializando Modelo XGBoost Multi-Output ---{RESET}")
     xgb_base = xgb.XGBRegressor(
         objective='reg:squarederror',
         n_estimators=rf_params.get('n_estimators', 100),      # Número de árboles
@@ -113,9 +120,9 @@ def train_and_evaluate_xgb(X_train, X_test, y_train, y_test,best_rf_reg, random_
     multioutput_model = MultiOutputRegressor(xgb_base)
 
     # 2) Entrenar modelo
-    print("Iniciando entrenamiento...")
+    print(f"{ROJO}Iniciando entrenamiento...{RESET}")
     multioutput_model.fit(X_train, y_train) # Ajuste sobre conjunto de entrenamiento
-    print("Entrenamiento completado.")
+    print(F"{ROJO}Entrenamiento completado.{RESET}")
 
     # 3) Realizar predicciones sobre conjunto de prueba
     y_pred_test = multioutput_model.predict(X_test)
@@ -129,17 +136,17 @@ def train_and_evaluate_xgb(X_train, X_test, y_train, y_test,best_rf_reg, random_
     r2_y2 = r2_score(y_test["Y2"], y_pred_test[:, 1])
 
     # 5) Mostrar resultados de evaluación
-    print("\n--- Resultados de Evaluación (XGBoost) ---")
-    print(f"Número de Features (después de OHE): {X_train.shape[1]}")
-    print(f"Tamaño del set de prueba: {X_test.shape[0]} observaciones\n")
+    print(f"\n{VERDE}--- Resultados de Evaluación (XGBoost) ---{RESET}")
+    print(f"Número de Features (después de OHE): {AZUL}{X_train.shape[1]}{RESET}")
+    print(f"Tamaño del set de prueba: {AZUL}{X_test.shape[0]}{RESET} observaciones\n")
 
     print(f"Métricas para Y1 (Heating Load):")
-    print(f"  RMSE (Error Cuadrático Medio): {rmse_y1:.4f}")
-    print(f"  R^2 Score: {r2_y1:.4f}")
+    print(f"  RMSE (Error Cuadrático Medio): {AZUL}{rmse_y1:.4f}{RESET}")
+    print(f"  R^2 Score: {AZUL}{r2_y1:.4f}{RESET}")
 
     print(f"\nMétricas para Y2 (Cooling Load):")
-    print(f"  RMSE (Error Cuadrático Medio): {rmse_y2:.4f}")
-    print(f"  R^2 Score: {r2_y2:.4f}")
+    print(f"  RMSE (Error Cuadrático Medio): {AZUL}{rmse_y2:.4f}{RESET}")
+    print(f"  R^2 Score: {AZUL}{r2_y2:.4f}{RESET}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Preprocesamiento y entrenamiento de modelo RandomForest multi-output.")
@@ -154,7 +161,7 @@ if __name__ == "__main__":
     estimator = best_rf_reg.estimator
     params = estimator.get_params()
     for key in ['n_estimators', 'max_depth', 'min_samples_split', 'random_state']:
-        print(f"{key}: {params[key]}")
+        print(f"{key}: {AZUL}{params[key]}{RESET}")
 
     train_and_evaluate_xgb(X_train, X_test, y_train, y_test,best_rf_reg)
 
