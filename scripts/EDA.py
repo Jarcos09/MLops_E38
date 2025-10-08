@@ -40,8 +40,8 @@ if missing_cols:
     raise ValueError(f"Faltan columnas esperadas en el dataset limpio: {missing_cols}")
 
 # Imputación
-df_missing_values = impute_missing_values(df_clean, highly_bias_cols)
-df_impute_outliers = impute_outliers(df_missing_values, highly_bias_cols)
+df_missing_values = impute_missing_values(df_clean)
+df_impute_outliers = impute_outliers(df_missing_values)
 
 # Guardar el dataset imputado como limpio
 df_impute_outliers.to_csv(ruta_dataset_limpio, index=False)
