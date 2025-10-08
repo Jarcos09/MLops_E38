@@ -58,13 +58,13 @@ cd MLops_E38/
 ## Instalar paqueterias
 ```bash
 pip install -r requirements.txt
-python -m ipykernel install --user --name=mlops --display-name "mlops"
 ```
 
 ## Creación del entorno virtual
 ```bash
 conda create --name mlops python=3.13
 conda activate mlops
+python -m ipykernel install --user --name=mlops --display-name "mlops"
 ```
 
 ## Configurar dvc
