@@ -40,3 +40,6 @@ pytest==8.4.2
 # APIs y servicios web
 
 fastapi==0.116.1
+
+#Visualizar estructura del repo
+directory_tree==1.0.0
